@@ -57,34 +57,75 @@
 | OLED 128x64 (SSD1306) | 1 kpl | €5 | I2C (21, 22) | Näyttö |
 | Potentiometri 10kΩ | 1 kpl | €1 | GPIO 34 (ADC) | Säätö |
 | Mikrokytkin (tact switch) | 4 kpl | €2 | GPIO 25, 26, 27, 33 | Valikko |
-| 3D-tulostettu kotelo | 1 kpl | - | - | Kiinnitys takaseinään |
-| Kaapeli (4-johdin) | ~30cm | €1 | - | OLED yhteys |
+| 3D-tulostettu kotelo | 1 kpl | - | - | **Irrallinen paneeli** |
+| Kaapeli 6-johtiminen | 50-100cm | €2 | - | Yhteys ESP32:een |
+| M12 läpivientinippa | 1 kpl | €3 | - | Tiivis läpivienti takaseinästä |
 
-**Yhteensä:** ~€9
+**Yhteensä:** ~€13
+
+**Huom:** UI-paneeli on **täysin irrallinen laite** - ei kiinni kotelon seinässä!
 
 ---
 
-### Kytkentä
+### Kytkentä (Irrallinen paneeli)
 
 ```
-ESP32 (kotelossa)          →    UI-paneeli (takaseinässä)
-────────────────────────────────────────────────────────
-GPIO 21 (SDA)             →    OLED SDA
-GPIO 22 (SCL)             →    OLED SCL
-3.3V                      →    OLED VCC + Potentiometri
-GND                       →    OLED GND + Potentiometri + Painikkeet
-
-GPIO 34 (ADC)             →    Potentiometri keskijalka
-GPIO 25                   →    Painike 1 (YLÖS/OK)
-GPIO 26                   →    Painike 2 (ALAS)
-GPIO 27                   →    Painike 3 (VALIKKO)
-GPIO 33                   →    Painike 4 (TAKAISIN)
+┌─────────────────────────────────────────────────────────┐
+│  FILAMENTTIKOTELO (sisällä ESP32)                       │
+│                                                          │
+│   ESP32                                                 │
+│   GPIO 21 (SDA)  ┐                                      │
+│   GPIO 22 (SCL)  │                                      │
+│   3.3V           ├─→ Kaapeli (6 johdinta) ──┐          │
+│   GND            │                           │          │
+│   GPIO 34 (ADC)  │                           │          │
+│   GPIO 25-33     ┘                           │          │
+│                                               │          │
+└───────────────────────────────────────────────┼──────────┘
+                                                │
+                                          M12 läpivienti
+                                         (tiivis, takaseinä)
+                                                │
+                                                │ 50-100cm kaapeli
+                                                │
+                                                ▼
+        ┌───────────────────────────────────────────┐
+        │  UI-PANEELI (irrallinen)                  │
+        │  ┌─────────────────────┐                 │
+        │  │   OLED 128x64       │                 │
+        │  │                     │                 │
+        │  │  Paine: -25.3 kPa   │                 │
+        │  │  Lämpö:  22.5 °C    │                 │
+        │  └─────────────────────┘                 │
+        │                                           │
+        │  [YLÖS] [ALAS] [MENU] [BACK]             │
+        │                                           │
+        │  Potentiometri: ◄═══●═══►                │
+        │                                           │
+        │  Seinäkiinnike tai jalusta                │
+        └───────────────────────────────────────────┘
 ```
+
+**Kaapelin johtimet:**
+1. SDA (I2C data) - OLED:lle
+2. SCL (I2C clock) - OLED:lle
+3. 3.3V (VCC) - OLED + potentiometri
+4. GND (Ground) - Yhteinen maa
+5. ADC (GPIO 34) - Potentiometrin keskijalka
+6. BUTTONS (GPIO 25) - Painikkeet yhteiseen pull-down -järjestelmään
 
 **Läpivienti takaseinästä:**
-- M12 läpivientinippa + tiivistysrengas
-- 6-johtiminen kaapeli (SDA, SCL, VCC, GND, ADC, painikkeet yhteisjohto)
-- 3D-tulostettu UI-paneelin kotelo
+- **M12 läpivientinippa** (IP67-luokka, vesitiivisyy) ~€3
+- **Tiivistysrengas** (NBR tai silikoni)
+- **Kaapelityyppi:** 6×0.25mm² joustava, suojattu (esim. ystokaapeli)
+- **Pituus:** 50-100 cm (riittää että paneeli on käden ulottuvilla)
+- **Liitin (valinnainen):** JST-XH 6-pin tai vastaava (helppo irrottaa)
+
+**Asennusvaihtoehdot:**
+1. **Seinälle:** 3D-tulostettu seinäkiinnike (2× M4 ruuvi)
+2. **Pöydälle:** Tulostettu jalusta (kallistettava)
+3. **Magneettikiinnitys:** Magneetti taakse → kiinni metallirunkoon
+4. **Ripustettava:** Silmukka taakse → ripustetaan koukusta
 
 ---
 

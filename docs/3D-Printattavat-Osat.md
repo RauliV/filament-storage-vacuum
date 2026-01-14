@@ -143,20 +143,57 @@ Runko:  [========]
 
 ---
 
-### 8. Manuaalisen UI-paneelin kotelo
+### 8. Manuaalisen UI-paneelin kotelo (Irrallinen)
 
-**Käyttötarkoitus:** OLED-näyttö + painikkeet + potentiometri takaseinässä  
+**Käyttötarkoitus:** OLED-näyttö + painikkeet + potentiometri **irrallisena laitteena**  
 **Materiaali:** PLA  
-**Tulostusaika:** ~3h
+**Tulostusaika:** ~3-4h (kotelo + kiinnike/jalusta)
 
-**Sisältää:**
-- OLED 128x64 -näytön kehys
-- 4x painikereikä (12mm halkaisija)
-- Potentiometrin reikä
-- Kaapeliläpivienti takaosaan
-- Kiinnitysreiät M3-ruuveille
+**Paneelin kotelo sisältää:**
+- OLED 128x64 -näytön kehys (press-fit tai ruuvikiinnitys)
+- 4x painikereikä (12mm halkaisija, tact switch:lle)
+- Potentiometrin reikä (7mm halkaisija)
+- Kaapeliläpivienti takaosaan (M12-kierteellä)
+- Sisäinen tila elektroniikalle (OLED + piirilevykkeelle)
+
+**Asennusvaihtoehdot (tulosta yksi):**
+
+#### a) Seinäkiinnike
+- 2× M4 ruuvireiät (50mm jaolla)
+- Kiinnitys suoraan seinään tai kotelon viereen
+- Tulostusaika: +30min
+
+#### b) Pöytäjalusta
+- Kallistettava tukijalka (15-45°)
+- Liukuestematto pohjan (tai tulosta teksturoidulla pohjalla)
+- Tulostusaika: +1h
+
+#### c) Magneettilevey
+- 2-4× neodyymimagneetti (20×3mm)
+- Kiinnitys suoraan kotelon metallirunkoon
+- Tulostusaika: +20min
+- Magneetit: ~€3
+
+#### d) Ripustuslenkki
+- Silmukka yläosaan
+- Ripusta koukusta tai kotelon sivusta
+- Tulostusaika: +10min
+
+**Kaapelinhallinnan yksityiskohdat:**
+- Kaapelin suojaputki (joustava tai 3D-tulostettu)
+- Kaapeliläpivienti koteloon: M12 kierrenippa + O-rengas
+- Kaapelin pituus: 50-100 cm (suositus: 75 cm)
+- Valinnainen: JST-liitin keskelle (nopea irrotus)
 
 **Katso:** [Kayttoliittymat.md](Kayttoliittymat.md)
+
+**Piirilevy-vinkki:**  
+Voit suunnitella pienen piirilevyn (5×7 cm) jossa:  
+- OLED-pistoke  
+- 4× painikkeen pull-down-vastukset (10kΩ)  
+- Potentiometri suoraan  
+- 6-pin liitin kaapelille  
+→ Siisti lopputulos ilman löysiä johtoja!
 
 ---
 
