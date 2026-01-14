@@ -33,12 +33,12 @@ Kansi nostetaan symmetrisesti kahdella DC-moottorilla, jotka pyörittävät kier
 | M8 mutteri (pähkinä) | 2 kpl | ~€1 | " | Kiinnitys kanteen |
 | M8 mutteri (kiinnitys) | 2 kpl | ~€1 | " | Tanko kiinni pohjaan |
 | 608 kuulalaakeri (8x22x7mm) | 4 kpl | ~€5 | TME.eu, AliExpress | Ylä- ja alapää tangoille |
-| L298N moottoriohjain | 1 kpl | ~€3-5 | AliExpress, Partco | Ohjaa 2 moottoria, 3-12V |
-| DC-moottorit 3-6V | 2 kpl | **Olemassa** | - | "Yellow DC Gear Motor" tai vastaava |
+| L298N moottoriohjain | 1-2 kpl | ~€3-5/kpl | AliExpress, Partco | 1 kpl = 2 moottoria, 2 kpl = 4 moottoria |
+| DC-moottorit 3-6V | 2-4 kpl | **Olemassa** | - | 2 kpl perus, 4 kpl jos tarvitaan voimaa |
 | M3 ruuvit + mutterit | 20 kpl | ~€2 | Biltema | Kiinnityksiin |
 | M4 ruuvit | 8 kpl | ~€2 | " | Raskaampiin kiinnityspisteisiin |
 
-**Yhteensä:** ~€20 + olemassa olevat moottorit
+**Yhteensä:** ~€20 (2 moottoria) tai ~€25 (4 moottoria) + olemassa olevat moottorit
 
 ---
 
@@ -150,12 +150,12 @@ Kansi nostetaan symmetrisesti kahdella DC-moottorilla, jotka pyörittävät kier
    - Kannen pitää nousta/laskea sulavasti
    - Ei kiinni jäämistä
 
-### Vaihe 3: Elektroniikka
+### Vaihe 3: Elektroniikka (2 moottoria)
 
 7. **Kytke moottorit L298N-ohjaimeen**
-   - Moottor A → OUT1, OUT2
-   - Moottor B → OUT3, OUT4
-   - +12V, GND L298N:ään
+   - Moottor A (vasen) → OUT1, OUT2
+   - Moottor B (oikea) → OUT3, OUT4
+   - +6V, GND L298N:ään (3-6V moottoreille riittää 6V syöttö)
 
 8. **Kytke L298N ESP32:een**
    ```
@@ -168,13 +168,46 @@ Kansi nostetaan symmetrisesti kahdella DC-moottorilla, jotka pyörittävät kier
    IN4    →   GPIO 21 (Moottor B suunta)
    ENB    →   GPIO 22 (Moottor B PWM nopeus)
    
-   12V    →   VIN (ESP32)
+   6V     →   L298N +12V (toimii 6-12V)
    GND    →   GND (yhteinen)
    ```
 
 9. **Testaa moottoreiden synkronointi**
    - Molemmat moottorit samalla nopeudella
    - Jos kansi kallistuu, säädä PWM-arvoja
+
+---
+
+### Vaihe 3B: Elektroniikka (4 moottoria - jos tarvitset enemmän voimaa)
+
+**Jos 2 moottoria ei riitä, lisää 2 moottoria lisää:**
+
+7. **Kytke 4 moottoria kahteen L298N-ohjaimeen**
+   
+   **L298N #1 (vasen tanko):**
+   - Moottor 1 (vasen ylä) → OUT1, OUT2
+   - Moottor 2 (vasen ala) → OUT3, OUT4
+   
+   **L298N #2 (oikea tanko):**
+   - Moottor 3 (oikea ylä) → OUT1, OUT2
+   - Moottor 4 (oikea ala) → OUT3, OUT4
+
+8. **Kytke molemmat L298N ESP32:een**
+   ```
+   L298N #1     ESP32          L298N #2     ESP32
+   ────────     ─────          ────────     ─────
+   IN1      →   GPIO 16        IN1      →   GPIO 25
+   IN2      →   GPIO 17        IN2      →   GPIO 26
+   ENA      →   GPIO 18        ENA      →   GPIO 27
+   IN3      →   GPIO 19        IN3      →   GPIO 32
+   IN4      →   GPIO 21        IN4      →   GPIO 33
+   ENB      →   GPIO 22        ENB      →   GPIO 14
+   
+   6V       →   Yhteinen 6V virtalähde
+   GND      →   Yhteinen GND
+   ```
+
+**Koodissa:** Kaikki 4 moottoria samaan suuntaan samalla nopeudella
 
 ---
 
