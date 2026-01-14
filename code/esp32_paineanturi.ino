@@ -390,12 +390,19 @@ void handleSettingsTarget() {
   digitalWrite(SOLENOID_VALVE_PIN, HIGH);
   Serial.println("Venttiili auki - paine tasaantuu...");
   
-  // 3. Odota että paine tasaantuu
+  // 3. ÄÄNI: Vakuumin vapautuminen "Pssshhhhh"
+  playVacuumReleaseSound();
+  
+  // 4. LED-animaatio: Ilma virtaa sisään
+  Serial.println("🌊 Flow-animaatio käynnistyy...");
+  flowAnimation(4000);  // 4 sekuntia flow-efektiä
+  
+  // 5. Odota että paine tasaantuu (lisäaika jos tarpeen)
+  Serial.println("⏳ Varmistetaan paineen tasaantuminen...");
   unsigned long startTime = millis();
-  while (millis() - startTime < LID_OPEN_DELAY) {
+  while (millis() - startTime < 1000) {  // 1s lisäaika
     readSensors();
     updateDisplay();
-    updateLEDs();
     delay(100);
     
     // Tarkista onko paine tasaantunut
@@ -410,15 +417,26 @@ void handleSettingsTarget() {
   delay(300);
   tone(BUZZER_PIN, 1500, 200);
   
-  // 5. Avaa kansi lineaaritoimilaitteella
-  Serial.println("Avataan kantta...");
+  // 6. Sulje venttiili
+  digitalWrite(SOLENOID_VALVE_PIN, LOW);
+  Serial.println("🔒 Venttiili suljettu");
+  
+  // 7. ÄÄNI: Kannen avautuminen "beep-beep"
+  playLidOpenSound();
+  
+  // 8. LED: Sateenkaari-animaatio kun kansi avautuu
+  Serial.println("🌈 Avataan kantta...");
   actuatorServo.write(ACTUATOR_OPEN_POSITION);
   
-  // 6. Odota että kansi on täysin auki
-  delay(LID_CLOSE_DURATION);
+  // 9. Sateenkaari pyörii kun kansi nousee
+  rainbowAnimation(LID_CLOSE_DURATION);
+  
+  // 10. Valmis: Valkoinen valo
+  fill_solid(leds, NUM_LEDS, CRGB::White);
+  FastLED.show();
   
   lidState = OPEN;
-  Serial.println("Kansi auki!");
+  Serial.println("✅ KANSI AUKI - Filamentit saatavilla!");
 }
 
 // Sulje kansi automaattisesti
