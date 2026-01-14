@@ -1,5 +1,6 @@
 # Ruuvitankomekanismi - Kannen automaattinen avaus
 
+**Päivitetty:** 14.1.2026  
 **Status:** Suunnittelu  
 **Tyyppi:** Kaksipuolinen DC-moottoripohjainen nosto
 

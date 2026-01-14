@@ -1,5 +1,7 @@
 # Kotelon rakenne ja kokoonpano-ohjeet
 
+Päivitetty: 14.1.2026
+
 ---
 
 ## 📐 "Räjäytyskuva" – Mitä tulee minnekin
