@@ -1,7 +1,14 @@
 # Alipaineellinen Filamenttikotelo
 
+![Status](https://img.shields.io/badge/status-in--progress-yellow?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
+![Platform](https://img.shields.io/badge/platform-ESP32-green?style=flat-square)
+![Language](https://img.shields.io/badge/language-Finnish-red?style=flat-square)
+
 **Projekti aloitettu:** 14.1.2026  
 **Tavoite:** Toimiva, kuiva ja puhdas filamenttisäilytys alipaineella
+
+🇫🇮 Dokumentaatio suomeksi | 🇬🇧 English version coming soon
 
 ---
 
@@ -98,7 +105,55 @@ Filament Storage/
 2. **Alipainetta ei tarvitse olla paljoa** – -20 kPa riittää mainiosti
 3. **Automaatio on "nice to have"**, mutta käsipumppu + manometri riittää alkuun
 4. **Pumppu kotelon ulkopuolelle** – vähemmän lämpöä ja helpompi huoltaa
-5. **Hitsattu teräsrunko** – kestävä ja jäykkä, tukee akryyli/polykarbonaattilevyt
+5. **Hitsattu teräsrunko** – kestävä ja jäykkä, tukee akryyli/
+
+---
+
+## 🤝 Osallistuminen
+
+Projektiin osallistuminen on tervetullutta! Katso [CONTRIBUTING.md](CONTRIBUTING.md) lisätietoja varten.
+
+**Tapoja osallistua:**
+- 🐛 Raportoi bugeja
+- 💡 Ehdota uusia ominaisuuksia
+- 📝 Paranna dokumentaatiota
+- 🔧 Kirjoita koodia
+- 🎨 Suunnittele 3D-printattavia osia
+- 📸 Jaa kuvia toteutuksestasi
+
+---
+
+## 📜 Lisenssi
+
+Tämä projekti on lisensoitu [MIT-lisenssillä](LICENSE) - katso LICENSE-tiedosto lisätietoja varten.
+
+---
+
+## 🌟 Tekijät ja kiitokset
+
+- Projekti: [@raulivirtanen](https://github.com/rauliV
+- Yhteisön kontribuutiot tervetulleita!
+
+---
+
+## 📞 Yhteystiedot ja tuki
+
+**Ongelmat ja kysymykset:**
+- Avaa [Issue](../../issues) GitHubissa
+- Katso [CONTRIBUTING.md](CONTRIBUTING.md) ohjeita varten
+
+**Keskustelu:**
+- [Discussions](../../discussions) (jos käytössä)
+
+---
+
+<div align="center">
+
+**⭐ Jos projekti on hyödyllinen, anna tähtinen GitHubissa! ⭐**
+
+Tehty ❤️:llä Suomessa 🇫🇮
+
+</div>polykarbonaattilevyt
 6. **Peilaava muovi + läpinäkyvä polykarb** – näyttävä yhdistelmä, näkee filamentit
 
 ---
