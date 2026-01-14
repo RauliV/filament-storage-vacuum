@@ -1,7 +1,5 @@
 # 3D-Printattavat osat ja komponentit
 
-Päivitetty: 14.1.2026
-
 ---
 
 ## ✅ VOIDAAN TULOSTAA (Suositus)

@@ -1,7 +1,5 @@
 # 3D-Mallin dokumentaatio – Filamenttiteline.3mf
 
-Päivitetty: 14.1.2026
-
 ---
 
 ## 📦 Yleistiedot

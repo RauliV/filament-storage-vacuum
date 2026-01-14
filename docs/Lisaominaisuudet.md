@@ -1,7 +1,5 @@
 # Lisäominaisuudet – Automaatio ja efektit
 
-Päivitetty: 14.1.2026
-
 ---
 
 ## 🤖 Automaattinen avaus/sulku

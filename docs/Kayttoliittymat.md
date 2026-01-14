@@ -1,6 +1,5 @@
 # Käyttöliittymät - Manuaalinen ja Web-pohjainen
 
-**Päivitetty:** 14.1.2026  
 **Arkkitehtuuri:** ESP32 (I/O-ohjaus) + Erillinen palvelin (Web UI)
 
 ---

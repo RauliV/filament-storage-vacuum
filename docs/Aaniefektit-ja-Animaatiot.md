@@ -1,6 +1,5 @@
 # Ääniefektit ja visuaaliset efektit - Dokumentaatio
 
-**Päivitetty:** 14.1.2026  
 **Lisätty ESP32-koodiin:** Versio 2.1
 
 ---

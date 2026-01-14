@@ -1,6 +1,5 @@
 # Projektin Yhteenveto ja Rakenne
 
-**Päivitetty:** 14.1.2026  
 **Tila:** Fyysinen rakenne valmis, elektroniikka suunnitteilla  
 **Tyyppi:** Alipaineellinen filamenttisäilytys automaatiolla
 

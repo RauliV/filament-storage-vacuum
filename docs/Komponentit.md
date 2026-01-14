@@ -1,7 +1,5 @@
 # Komponenttilista – Alipaineellinen Filamenttikotelo
 
-Päivitetty: 14.1.2026
-
 ---
 
 ## 🔧 Pakolliset komponentit (perusversio)

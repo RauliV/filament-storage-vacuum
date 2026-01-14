@@ -1,6 +1,5 @@
 # Filamenttien automaattinen syöttö kotelosta BambuLab AMS:ään
 
-**Päivitetty:** 14.1.2026  
 **Tulostin:** BambuLab P1S + AMS (4 filamenttia)  
 **Ongelma:** Manuaalinen filamenttien pujottelu kotelosta AMS:ään on työlästä
 
