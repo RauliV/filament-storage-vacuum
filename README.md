@@ -1,0 +1,108 @@
+# Alipaineellinen Filamenttikotelo
+
+**Projekti aloitettu:** 14.1.2026  
+**Tavoite:** Toimiva, kuiva ja puhdas filamenttisäilytys alipaineella
+
+---
+
+## 🎯 Tavoitteet
+
+- Pitää filamentti **kuivana ja puhtaana** – ei enää poppingia tai tukoksia
+- **Alipaine** estää kosteuden pääsyn koteloon
+- **Helppo käyttö**: kansi auki → rulla vaihtoon → kansi kiinni → alipaine päälle
+- **Automaattinen seuranta**: ESP32 + paineanturi näyttää, pitääkö kotelo
+
+---
+
+## 📋 Pääkomponentit
+
+1. **Tiivis laatikko**
+   - Silikoninauha tiivisteenä (1 mm pyöreä, Shore A 40-60)
+   - Ura 0.5-0.7 mm syvä, nauha nousee 0.3-0.4 mm
+   
+2. **Alipainejärjestelmä**
+   - Alipaineventtiili (Schrader / pikaliitin)
+   - Käsipumppu tai 12V vakuumipumppu
+   - Tavoite: -20...-50 kPa
+   
+3. **Automaatio (valinnainen)**
+   - ESP32 + paineanturi (BMP280 / MPX5100)
+   - Web UI paineen seurantaan
+   - Automaattinen pumppuohjaus
+
+4. **Filamentin läpivienti (valinnainen)**
+   - PTFE-putki + O-rengas
+   - Bulkhead-liitin tai 3D-printattu ratkaisu
+
+---
+
+## 📁 Projektin rakenne
+
+```
+Filament Storage/
+├── README.md              # Tämä tiedosto - projektin yleiskuvaus
+├── docs/
+│   ├── Komponentit.md     # Tarkat komponentit, hinnat, toimittajat
+│   ├── Rakenne.md         # Kokoonpano-ohjeet ja "räjäytyskuva"
+│   ├── 3D-Malli.md        # Olemassa olevan 3D-mallin dokumentaatio
+│   ├── Lisaominaisuudet.md # Automaatio, valaistus, efektit
+│   └── Muistiinpanot.md   # Matkan varrelta opitut asiat
+├── code/
+│   ├── esp32_paineanturi/ # ESP32-koodi paineen mittaukseen
+│   └── web_ui/            # Web-käyttöliittymä
+├── 3d-models/             # CAD-mallit
+│   ├── Filamenttiteline.3mf  # Koko kotelorakenne (45 osaa!)
+│   ├── Autotalli.stl      # Visualisointi tilankäyttöön
+│   └── Filamenttiteline.stl
+├── komponentit/           # Datasheetit, tekniset tiedot
+└── kuvat/                 # Valokuvat, mittapiirustukset, prototyypit
+```
+
+---
+
+## 🚀 Kehitysvaiheet
+
+### Vaihe 0: Olemassa oleva 3D-malli ✓
+- [x] Kotelon 3D-malli on jo valmiina (Filamenttiteline.3mf)
+- [x] 45 komponenttia: levyt, kulmapalat, saranat, listat
+- [x] Modulaarinen CNC/laserleikattu rakenne
+- [x] Mallin analysointi ja mittaus
+
+### Vaihe 1: Valmistus ✓ (käynnissä)
+- [x] **Hitsattu metallinen tukirunko** (teräs)
+- [x] **Levyt jyrsitty:**
+  - Runkolevyt: 3 mm peilaava muovi
+  - Kansilevyt: 3 mm läpinäkyvä polykarbonaatti
+- [x] Komponenttilista ja toimittajat
+- [ ] **Tukirungon piirtäminen 3D-malliin** (tehty fyysisesti, ei mallissa vielä)
+- [ ] Kokoonpano mekaanisesti
+
+### Vaihe 2: Tiivistys ja testaus (seuraavana)
+- [ ] Tiivisteratkaisun suunnittelu listoihin
+- [ ] Saranat asennettu
+- [ ] Alipaineen pitävyys testattu
+- [ ] Venttiili ja pumppujärjestelmä
+- [ ] ESP32-koodi paineen lukemiseen
+
+### Vaihe 3: Lopullinen versio
+- [ ] Tiivisteet asennettu ja testattu
+- [ ] Elektroniikka integroitu
+- [ ] Automaattinen pumppuohjaus toimii
+- [ ] Dokumentointi valmiiksi
+
+---
+
+## 💡 Keskeiset oivallukset
+
+1. **Tiiveys on kaikki kaikessa** – ei kannata investoida pumppuihin, jos kotelo vuotaa
+2. **Alipainetta ei tarvitse olla paljoa** – -20 kPa riittää mainiosti
+3. **Automaatio on "nice to have"**, mutta käsipumppu + manometri riittää alkuun
+4. **Pumppu kotelon ulkopuolelle** – vähemmän lämpöä ja helpompi huoltaa
+5. **Hitsattu teräsrunko** – kestävä ja jäykkä, tukee akryyli/polykarbonaattilevyt
+6. **Peilaava muovi + läpinäkyvä polykarb** – näyttävä yhdistelmä, näkee filamentit
+
+---
+
+## 📖 Lisätiedot
+
+Katso tarkemmat ohjeet ja komponenttilistat `docs/`-kansiosta.
