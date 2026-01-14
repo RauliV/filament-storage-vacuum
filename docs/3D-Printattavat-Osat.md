@@ -143,7 +143,57 @@ Runko:  [========]
 
 ---
 
-### 7. Lineaaritoimilaitteen kiinnikkeet (Vaihtoehtoinen ratkaisu)
+### 8. Manuaalisen UI-paneelin kotelo
+
+**Käyttötarkoitus:** OLED-näyttö + painikkeet + potentiometri takaseinässä  
+**Materiaali:** PLA  
+**Tulostusaika:** ~3h
+
+**Sisältää:**
+- OLED 128x64 -näytön kehys
+- 4x painikereikä (12mm halkaisija)
+- Potentiometrin reikä
+- Kaapeliläpivienti takaosaan
+- Kiinnitysreiät M3-ruuveille
+
+**Katso:** [Kayttoliittymat.md](Kayttoliittymat.md)
+
+---
+
+### 9. Gearbox-kotelot (ulkoasennus)
+
+**Käyttötarkoitus:** Suojaa moottorit + vaihteistot kotelon ulkopuolella  
+**Materiaali:** PETG (kestää ympäristöä)  
+**Tulostusaika:** ~4h per kotelo
+
+**Sisältää:**
+- Suljettu kotelo vaihteiston ympärille
+- Tuuletusreiät (verkolla suojattu)
+- Kiinnitysjalat takaseinään (M6-ruuvit)
+- Akselin läpivienti laakeroidulla männällä
+
+**Säästö:** ~€20-30 per kotelo (vs. valmis teollisuuskotelo)
+
+---
+
+### 10. Läpivientikiinnikkeet kierretangoille
+
+**Käyttötarkoitus:** Tiivis läpivienti kierretangolle kotelon läpi  
+**Materiaali:** PETG  
+**Tulostusaika:** ~1.5h per kpl
+
+**Sisältää:**
+- 608-laakeripesä
+- Tiivistys-ura O-rengasta varten
+- Kiinnitys koteloon M4-ruuveilla
+
+**Vaatii lisäksi:**
+- M16 läpivientinippa (~€5)
+- O-rengas 12×2mm NBR (~€1)
+
+---
+
+### 7. Pumppukiinnikkeet
 
 **Kiinnitysbraketit:**
 - Toimilaite runkoon
