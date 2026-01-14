@@ -33,8 +33,8 @@ Kansi nostetaan symmetrisesti kahdella DC-moottorilla, jotka pyörittävät kier
 | M8 mutteri (pähkinä) | 2 kpl | ~€1 | " | Kiinnitys kanteen |
 | M8 mutteri (kiinnitys) | 2 kpl | ~€1 | " | Tanko kiinni pohjaan |
 | 608 kuulalaakeri (8x22x7mm) | 4 kpl | ~€5 | TME.eu, AliExpress | Ylä- ja alapää tangoille |
-| L298N moottoriohjain | 1 kpl | ~€3-5 | AliExpress, Partco | Ohjaa 2 moottoria |
-| DC-moottorit | 2 kpl | **Olemassa** | - | 3-12V riittää |
+| L298N moottoriohjain | 1 kpl | ~€3-5 | AliExpress, Partco | Ohjaa 2 moottoria, 3-12V |
+| DC-moottorit 3-6V | 2 kpl | **Olemassa** | - | "Yellow DC Gear Motor" tai vastaava |
 | M3 ruuvit + mutterit | 20 kpl | ~€2 | Biltema | Kiinnityksiin |
 | M4 ruuvit | 8 kpl | ~€2 | " | Raskaampiin kiinnityspisteisiin |
 
@@ -51,10 +51,11 @@ Kansi nostetaan symmetrisesti kahdella DC-moottorilla, jotka pyörittävät kier
 
 **Osat:**
 - Moottorilaippa (kiinnitys moottoriin)
-- Hammaspyörät:
-  - 1. vaihde: 10T (moottorissa) → 30T (akseli) = 3:1
-  - 2. vaihde: 20T (akseli) → 60T (kierretanko) = 3:1
-  - **Kokonaisvälitys: 9:1** (voit säätää)
+- Hammaspyörät (3-6V moottoreille suositus):
+  - 1. vaihde: 10T (moottori) → 40T (akseli) = 4:1
+  - 2. vaihde: 15T (akseli) → 60T (kierretanko) = 4:1
+  - **Kokonaisvälitys: 16:1** (3-6V moottoreille)
+  - Jos sinulla on valmiiksi vaihteistettu moottori (60 rpm), käytä: 10T → 30T = 3:1
 - Laakeripesät akseleille (3-5mm akselit)
 - Vaihteiston kotelo (suojaa pölyltä)
 
@@ -242,7 +243,7 @@ void openLidMotors() {
   // Aseta nopeus
   analogWrite(MOTOR_A_EN, MOTOR_SPEED);
   analogWrite(MOTOR_B_EN, MOTOR_SPEED); // Voit säätää jos kallistuu
-  
+  ~40 sekuntia (3-6V moottorit hitaampia)
   delay(OPEN_TIME_MS); // Pyöritä 8 sekuntia
   
   stopMotors();
@@ -262,7 +263,7 @@ void closeLidMotors() {
   // Aseta nopeus
   analogWrite(MOTOR_A_EN, MOTOR_SPEED);
   analogWrite(MOTOR_B_EN, MOTOR_SPEED);
-  
+  ~40
   delay(CLOSE_TIME_MS); // Pyöritä 8 sekuntia
   
   stopMotors();
@@ -318,11 +319,17 @@ analogWrite(MOTOR_A_EN, 200); // Vasen
 analogWrite(MOTOR_B_EN, 195); // Oikea hieman hitaammin
 ```
 
-### 2. Ajan säätö
-Mittaa kuinka kauan kannen avaamiseen menee:
+### 2. Ajan säätö (TÄRKEÄ 3-6V moottoreille!)
+Mittaa TODELLINEN aika kännykän sekuntikellolla:
 ```cpp
-const int OPEN_TIME_MS = 8000; // Säädä tarvittaessa
+// Ensimmäinen testi: aseta pitkä aika, pysäytä manuaalisesti
+const int OPEN_TIME_MS = 60000; // 1 minuutti testiä varten
+
+// Mittaa stopparilla → esim. 45 sekuntia → aseta:
+const int OPEN_TIME_MS = 45000; // 45 sekuntia
 ```
+
+**3-6V moottorit ovat HUOMATTAVASTI hitaampia** kuin 12V!
 
 ### 3. Hall-sensorin käyttö (valinnainen)
 Jos haluat tarkemman asemoinnin, lisää Hall-sensori:
@@ -335,23 +342,48 @@ if (position > 3000) { // Kansi ylhäällä
 ```
 
 ---
+ (3-6V DC-moottorit)
 
-## 📊 Laskelmat
+### Moottorin tyyppi vaikuttaa:
 
-### Nostovoima
+#### A) Jos sinulla on **valmiiksi vaihteistettu moottori** (60-100 rpm @ 6V):
 - M8 kierretanko: nousu **1.25mm/kierros**
-- Vaihteisto 9:1 → moottorin 9 kierrosta = 1.25mm nosto
-- Kannen nostokorkeus: **100mm** (esim.)
+- Lisävaihteisto 3:1
+- Kannen nostokorkeus: **100mm**
 - Tarvittavat kierrokset: 100 / 1.25 = **80 kierrosta tankoa**
-- Moottorin kierrokset: 80 × 9 = **720 kierrosta**
+- Moottorin kierrokset: 80 × 3 = **240 kierrosta**
+- **Aika:** 240 / 60 rpm = **4 minuuttia** ✅ SOPIVA
+- **Voima:** 60 rpm moottori + 3:1 = riittävä nostoon
 
-### Nopeus
-- DC-moottori: ~100 rpm (no-load)
-- Kuorman alla: ~60 rpm
-- Aika 720 kierrokseen: 720 / 60 = **12 minuuttia** ❌ LIIAN HIDAS!
+#### B) Jos sinulla on **nopea moottori ilman vaihteistoa** (3000+ rpm @ 6V):
+- Tarvitsee **16:1 vaihteiston** (tulostettava)
+- Moottorin nopeus kuorman alla: ~2000 rpm @ 6V
+- Vaihteiston jälkeen: 2000 / 16 = **125 rpm tankoa**
+- Kannen nostokorkeus: **100mm**
+- Tarvittavat kier (3-6V moottorit)
 
-**Ratkaisu: Vähennä välitystä!**
-- Käytä 3:1 vaihteisto → 240 kierrosta → **4 minuuttia**
+**Pieni 3-6V DC-moottori:**
+- Vääntömomentti: ~0.5-1.0 Nm (vaihteistettu malli)
+- Tai: ~0.01 Nm (nopea malli ilman vaihteistoa)
+
+**M8 kierretanko:**
+- Nousu: 1.25mm/kierros
+- Mekaaninen etu: η = 1.25mm / (2π × 4mm) = 0.05 (5% hyötysuhde on huono, mutta turvallinen arvio)
+- Teoreettinen nostovoima per tanko: T × (2π / nousu) = 1.0 Nm × (6.28 / 0.00125) = **5024 N** ❗ Teoria
+
+**Käytännössä:**
+- 3-6V moottori + 16:1 vaihteisto + M8 tanko ≈ **30-50N per tanko**
+- 2 tankoa → **60-100N kokonaisvoima**
+- Vakuumista johtuva voima: ~150N (0.5m² @ 30kPa)
+
+**Johtopäätös:** 
+- ⚠️ Riippuvainen moottorista - testaa!
+- Jos3-6V pieni moottori: yleensä 0.2-0.8A → ei ongelmaa
+   - Jos kuumenee → lisää heatsink tai tarkista että jännite on 6V (ei 12V!)ko
+- Tai käytä suurempaa vaihteistoa (20:1 tai 24:1)
+### Suositus 3-6V moottoreille:
+- ✅ Jos valmiiksi vaihteistettu (60 rpm): **3:1 lisävaihteisto**
+- ✅ Jos nopea moottori: **16:1 tai 20:1 vaihteisto***
 - Tai 2:1 → 160 kierrosta → **2.7 minuuttia** ✅ PAREMPI
 
 ### Voimanlaskenta
@@ -377,7 +409,23 @@ if (position > 3000) { // Kansi ylhäällä
 
 4. **Virtarajoitus**
    - L298N max 2A per moottori
-   - Jos moottorit vedetään yli → lisää heatsink
+   -⚠️ Jos 3-6V moottorit eivät riitä:
+
+**Ratkaisu A: Kolmas moottori**
+- Lisää kolmas tanko keskelle
+- 3 × 30-50N = 90-150N → riittää varmasti
+- L298N ohjaa vain 2 moottoria → tarvitset toisen L298N:n tai MX1508-ohjaimen
+
+**Ratkaisu B: Suurempi vaihteisto**
+- 20:1 tai 24:1 välitys → enemmän voimaa, hitaampi
+- Kannen avaus ~60-90 sekuntia
+
+**Ratkaisu C: Päivitä 12V moottoreihin**
+- Huomattavasti enemmän voimaa
+- Nopeampi toiminta
+- ~€10-15 per moottori
+
+###  Jos moottorit vedetään yli → lisää heatsink
 
 ---
 
