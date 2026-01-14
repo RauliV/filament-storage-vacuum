@@ -101,7 +101,49 @@ Runko:  [========]
 
 ---
 
-### 6. Lineaaritoimilaitteen kiinnikkeet
+### 6. DC-moottoripohjainen ruuvitankomekanismi ⭐ KÄYTÖSSÄ
+
+**Kaksipuolinen symmetrinen kannen nosto**
+
+#### a) Vaihteistot (2 kpl)
+**Tarkoitus:** Vähentää moottorin nopeutta ja kasvattaa voimaa  
+**Materiaali:** PETG tai ABS (kestää rasituksen)  
+**Tulostusaika:** ~3-4h per vaihteisto  
+**Infill:** 40-50%
+
+**Osat:**
+- Moottorilaippa (kiinnitys moottoriin)
+- Hammaspyörät: 10T → 30T → 60T (3:1 → 2:1 = 6:1 kokonaisvälitys)
+- La8keripesät akseleille
+- Kotelo (suojaa pölyltä)
+
+**Suunnittelu:** Käytä moduuli 1.0 hammastusta, lisää 0.2mm välyä  
+**Säästö:** ~€35-50 (vs. kaksi lineaaritoimilaitetta)
+
+#### b) Pähkinäkiinnikkeet kanteen (2 kpl)
+**Tarkoitus:** Pitää M8 mutteri paikallaan kannessa  
+**Materiaali:** PETG  
+**Tulostusaika:** ~1h per kpl  
+
+**Rakenne:** Heksasokkelo M8 mutterille + M4 kiinnitysreiät
+
+#### c) Ylälaakerikiinnikkeet (2 kpl)
+**Tarkoitus:** Tukee kierretangon yläpäätä  
+**Materiaali:** PETG/PLA  
+**Tulostusaika:** ~1h per kpl
+
+**Sisältää:** 608-laakeripesä + kiinnitys kattoon
+
+#### d) Pohjan moottorikotelo (2 kpl)
+**Tarkoitus:** Yhdistelmä - moottori + vaihteisto + alalaakeri  
+**Materiaali:** PETG  
+**Tulostusaika:** ~2h per kpl
+
+**Katso tarkemmat ohjeet:** [Ruuvitankomekanismi.md](Ruuvitankomekanismi.md)
+
+---
+
+### 7. Lineaaritoimilaitteen kiinnikkeet (Vaihtoehtoinen ratkaisu)
 
 **Kiinnitysbraketit:**
 - Toimilaite runkoon
@@ -110,7 +152,7 @@ Runko:  [========]
 - **Materiaalit:** PETG tai ABS (kestävyys)
 - **Säästö:** 10-20 €
 
-**Huom:** Itse toimilaite täytyy ostaa, mutta kiinnikkeet tulostettuna!
+**Huom:** Itse toimilaite täytyy ostaa (~€25-40), mutta kiinnikkeet tulostettuna!
 
 ---
 
@@ -123,7 +165,7 @@ Runko:  [========]
 
 ---
 
-### 8. Relekotelo ja DIN-kiinnike
+### 9. Relekotelo ja DIN-kiinnike
 
 **Elektroniikkakotelo:**
 - Rele, virtalähde, buck-muuntimet
