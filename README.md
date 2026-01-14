@@ -158,6 +158,40 @@ Tehty ❤️:llä Suomessa 🇫🇮
 
 ---
 
+## 📖 Dokumentaatio
+
+**📋 Aloita tästä:** **[Yhteenveto.md](docs/Yhteenveto.md)** - Projektin kokonaiskuva ja rakenne
+
+### Perustiedot:
+- **[Komponentit.md](docs/Komponentit.md)** – Ostoslista hintojen ja toimittajien kanssa
+- **[Rakenne.md](docs/Rakenne.md)** – Kokoonpano-ohjeet
+- **[3D-Malli.md](docs/3D-Malli.md)** – 45-osaisen CAD-mallin dokumentaatio
+
+### Automaatio:
+- **[Ruuvitankomekanismi.md](docs/Ruuvitankomekanismi.md)** – DC-moottoripohjainen kannen nosto
+- **[4-Moottorin-Koodi.md](docs/4-Moottorin-Koodi.md)** – Lisävoima 3-6V moottoreille
+- **[Kayttoliittymat.md](docs/Kayttoliittymat.md)** – Manuaalinen OLED-UI + Web-liittymä (MQTT) 🖥️
+
+### Lisäominaisuudet:
+- **[3D-Printattavat-Osat.md](docs/3D-Printattavat-Osat.md)** – Mitä voi tulostaa itse (~€113 säästö)
+- **[Aaniefektit-ja-Animaatiot.md](docs/Aaniefektit-ja-Animaatiot.md)** – Äänet ja LED-show 🎵🌈
+- **[Filamenttien-Syotto-AMS.md](docs/Filamenttien-Syotto-AMS.md)** – BambuLab AMS-integraatio 🎨
+- **[Lisaominaisuudet.md](docs/Lisaominaisuudet.md)** – Muut automaatio-ominaisuudet
+- **[Muistiinpanot.md](docs/Muistiinpanot.md)** – Projektipäiväkirja
+
+---
+
+## 🛠️ Käytetyt työkalut
+
+| Työkalu | Malli | Käyttö |
+|---------|-------|--------|
+| **CNC-jyrsin** | TTC450PRO | Levyjen leikkaus ja urat |
+| **3D-tulostin** | BambuLab P1S | Kiinnikkeet, vaihteistot, kotelot |
+| **Hitsauslaite** | (käsin) | Teräsrunko |
+| **CAD** | Fusion 360 | 3D-mallinnus |
+
+---
+
 ## 📖 Lisätiedot
 
 Katso tarkemmat ohjeet ja komponenttilistat `docs/`-kansiosta.
